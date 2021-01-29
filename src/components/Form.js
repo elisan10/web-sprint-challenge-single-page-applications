@@ -44,6 +44,12 @@ const Form = ({ addToOrder }) => {
       .string()
       .required("Name is required")
       .min(2, "Name must be at least 2 characters"),
+    size: yup.string(),
+    pepperoni: yup.boolean(),
+    sausage: yup.boolean(),
+    jalapeno: yup.boolean(),
+    pineapple: yup.boolean(),
+    instructions: yup.string(),
   });
 
   const validateChange = (e) => {

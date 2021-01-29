@@ -3,24 +3,24 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import Form from "./components/Form";
 import Confirmation from "./components/Confirmation";
 
-const defaultValue = [
-  {
-    //TEXT INPUT
-    name: "Elizabeth",
-    //DROPDOWN
-    size: "Large",
-    //TOPPINGS CHECKBOXES
-    pepperoni: true,
-    sausage: false,
-    jalapeno: true,
-    pineapple: false,
-    //TEXT INPUT
-    instructions: "Please don't burn it like last time",
-  },
-];
+// const defaultValue = [
+//   {
+//     //TEXT INPUT
+//     name: "Elizabeth",
+//     //DROPDOWN
+//     size: "Large",
+//     //TOPPINGS CHECKBOXES
+//     pepperoni: true,
+//     sausage: false,
+//     jalapeno: true,
+//     pineapple: false,
+//     //TEXT INPUT
+//     instructions: "Please don't burn it like last time",
+//   },
+// ];
 
 const App = () => {
-  const [order, setOrder] = useState(defaultValue);
+  const [order, setOrder] = useState(null);
   const history = useHistory();
 
   const routeToPizza = () => {
@@ -37,8 +37,13 @@ const App = () => {
       pineapple: item.pineapple,
       instructions: item.instructions,
     };
-    console.log(newOrder);
-    setOrder([...order, newOrder]);
+    if (order) {
+      console.log(newOrder);
+      setOrder([...order, newOrder]);
+    }
+    if (!order) {
+      setOrder([newOrder]);
+    }
   };
   return (
     <div>
